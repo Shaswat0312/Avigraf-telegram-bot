@@ -29,7 +29,21 @@ app.post("/new-message", async (req, res) => {
   const text = message.text.trim();
   const chatId = message.chat.id;
 
-  // Trigger: /flight AI101  or  flight AI101
+  if (text === "/start") {
+    await sendMessage(
+      chatId,
+      `✈️ *Welcome to Avigraf!*
+
+Send me a flight number and I'll fetch live status, route, and timing.
+
+Example: \`flight AI101\` or \`/flight 6E2341\`
+
+Try it now ✈️`
+    );
+    return res.sendStatus(200);
+  }
+
+
   const flightMatch = text.match(/^\/?flight\s+([A-Za-z0-9]+)/i);
 
   if (flightMatch) {
@@ -66,7 +80,6 @@ Aircraft: ${flight.aircraft?.registration || "N/A"}`;
 
     return res.sendStatus(200);
   }
-
 
   if (text.toLowerCase().includes("marco")) {
     try {
