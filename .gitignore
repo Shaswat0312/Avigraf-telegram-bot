@@ -152,3 +152,5 @@ thumb
 sketch
 
 .env
+# Added by ggshield
+.cache_ggshield

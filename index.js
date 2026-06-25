@@ -2,13 +2,13 @@ import dotenv from "dotenv";
 import express from "express";
 import axios from "axios";
 
-dotenv.config();
+dotenv.config({});
 
 const app = express();
 app.use(express.json());
 
-const BOT_TOKEN = process.env.BOT_TOKEN;
-const TELEGRAM_API = `https://api.telegram.org/bot${BOT_TOKEN}`;
+const BOT_TOKEN = process.env.BOT_TOKEN.trim()
+const TELEGRAM_API = `https://api.telegram.org/bot${BOT_TOKEN}`
 
 app.post("/new-message", async (req, res) => {
   const { message } = req.body;
@@ -45,3 +45,7 @@ const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log(`Server listening on port ${PORT}`);
 });
+
+console.log("Token loaded:", BOT_TOKEN ? BOT_TOKEN.slice(0, 10) + "..." : "MISSING")
+console.log("Token length:", BOT_TOKEN.length)
+console.log("Token JSON:", JSON.stringify(BOT_TOKEN))
