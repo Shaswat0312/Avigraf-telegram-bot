@@ -45,7 +45,3 @@ const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log(`Server listening on port ${PORT}`);
 });
-
-console.log("Token loaded:", BOT_TOKEN ? BOT_TOKEN.slice(0, 10) + "..." : "MISSING")
-console.log("Token length:", BOT_TOKEN.length)
-console.log("Token JSON:", JSON.stringify(BOT_TOKEN))
