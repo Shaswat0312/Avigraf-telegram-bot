@@ -67,7 +67,7 @@ Aircraft: ${flight.aircraft?.registration || "N/A"}`;
     return res.sendStatus(200);
   }
 
-  // Original marco/polo trigger
+
   if (text.toLowerCase().includes("marco")) {
     try {
       await sendMessage(chatId, "Polo!!");
